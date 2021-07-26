@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                     overflow: TextOverflow.clip,
                   ),
-                  Text("$price",style: TextStyle(
+                  Text("$price\$",style: TextStyle(
                     color: Colors.red,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
