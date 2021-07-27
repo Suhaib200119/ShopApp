@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop_app/Sweater.dart';
-import 'Clothing.dart';
-import 'Shoes.dart';
+import 'DB.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,50 +26,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String dataShow="clothing";
-  List<Clothing> clothingData=[
-    Clothing("Pincourt",30,"r1.jpeg","simply dummy text of the printing and typesetting industry."),
-    Clothing("cardigan",20,"r3.jpeg","simply dummy text of the printing and typesetting industry."),
-    Clothing("Alskini",40,"r2.jpeg","galley of type and scrambled it to make a type specimen book."),
-    Clothing("Plessee",50,"r5.jpeg","simply dummy text of the printing and typesetting industry."),
-    Clothing("cardigan",20,"r3.jpeg","simply dummy text of the printing and typesetting industry."),
-    Clothing("blazer",25,"r4.jpeg","galley of type and scrambled it to make a type specimen book."),
-    Clothing("Alskini",40,"r2.jpeg","galley of type and scrambled it to make a type specimen book."),
-    Clothing("Plessee",50,"r5.jpeg","simply dummy text of the printing and typesetting industry."),
-    Clothing("blazer",25,"r4.jpeg","galley of type and scrambled it to make a type specimen book."),
-    Clothing("Pincourt",30,"r1.jpeg","simply dummy text of the printing and typesetting industry."),
+  String products="clothing";
 
-  ];
-  List<Sweater> sweaterData=[
-    Sweater("bolero",70,"g1.jpg","galley of type and scrambled it to make a type specimen book."),
-    Sweater("nutria",90,"g5.jpg","galley of type and scrambled it to make a type specimen book."),
-    Sweater("cardigan",80,"g2.jpg","simply dummy text of the printing and typesetting industry."),
-    Sweater("jeans",40,"g4.jpg","simply dummy text of the printing and typesetting industry."),
-    Sweater("blazer",65,"g3.jpg","galley of type and scrambled it to make a type specimen book."),
-    Sweater("bolero",70,"g1.jpg","galley of type and scrambled it to make a type specimen book."),
-    Sweater("jeans",40,"g4.jpg","simply dummy text of the printing and typesetting industry."),
-    Sweater("cardigan",80,"g2.jpg","simply dummy text of the printing and typesetting industry."),
-    Sweater("nutria",90,"g5.jpg","galley of type and scrambled it to make a type specimen book."),
-    Sweater("blazer",65,"g3.jpg","galley of type and scrambled it to make a type specimen book."),
-
-  ];
-  List<Shoes> shoesData=[
-    Shoes("Chanel",40,"s5.jpg","simply dummy text of the printing and typesetting industry."),
-    Shoes("Salvatore",30,"s1.jpg","simply dummy text of the printing and typesetting industry."),
-    Shoes("Bruno ",25,"s4.jpg","galley of type and scrambled it to make a type specimen book."),
-    Shoes("Louboutin",35,"s2.jpg","simply dummy text of the printing and typesetting industry."),
-    Shoes("Edmunds",20,"s3.jpg","galley of type and scrambled it to make a type specimen book."),
-    Shoes("Louboutin",35,"s2.jpg","simply dummy text of the printing and typesetting industry."),
-    Shoes("Edmunds",20,"s3.jpg","galley of type and scrambled it to make a type specimen book."),
-    Shoes("Bruno ",25,"s4.jpg","galley of type and scrambled it to make a type specimen book."),
-    Shoes("Chanel",40,"s5.jpg","simply dummy text of the printing and typesetting industry."),
-    Shoes("Salvatore",30,"s1.jpg","simply dummy text of the printing and typesetting industry."),
-
-
-
-
-
-  ];
   Widget getCard(name,price,imageName,dec){
     return Card(
       shadowColor: Colors.white,
@@ -142,58 +98,70 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(vertical: 5,horizontal: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  child: Column(
                     children: [
-                      Expanded(child: RaisedButton(
-                        onPressed: () {
-                          setState(() {
-                            dataShow="clothing";
-                          });
-                        },
-                        child: Text("clothing",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                        color: Colors.white,
-                        textColor: Colors.orange,
-                        elevation: 10,
-                        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
-                      ),),
-                      SizedBox(width: 10,),
-                      Expanded(child: RaisedButton(
-                        onPressed: () {
-                          setState(() {
-                            dataShow="sweater";
-                          });
-                        },
-                        child: Text("sweater",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                        color: Colors.white,
-                        textColor: Colors.orange,
-                        elevation: 10,
-                        padding: EdgeInsets.symmetric(vertical: 10,horizontal:0),
-                      ),),
-                      SizedBox(width: 10,),
-                      Expanded(child: RaisedButton(
-                        onPressed: () {
-                          setState(() {
-                            dataShow="shoes";
-                          });
-                        },
-                        child: Text("shoes",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                        color: Colors.white,
-                        textColor: Colors.orange,
-                        elevation: 10,
-                        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(child: RaisedButton(
+                            onPressed: () {
+                              setState(() {
+                                products="clothing";
+                              });
+                            },
+                            child: Text("clothing",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            color: Colors.white,
+                            textColor: Colors.orange,
+                            elevation: 10,
+                            padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          ),),
+                          SizedBox(width: 10,),
+                          Expanded(child: RaisedButton(
+                            onPressed: () {
+                              setState(() {
+                                products="sweater";
+                              });
+                            },
+                            child: Text("sweater",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            color: Colors.white,
+                            textColor: Colors.orange,
+                            elevation: 10,
+                            padding: EdgeInsets.symmetric(vertical: 10,horizontal:0),
+                          ),),
+                          SizedBox(width: 10,),
+                          Expanded(child: RaisedButton(
+                            onPressed: () {
+                              setState(() {
+                                products="shoes";
+                              });
+                            },
+                            child: Text("shoes",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            color: Colors.white,
+                            textColor: Colors.orange,
+                            elevation: 10,
+                            padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          ),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Text("$products products",style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.bold,
                       ),),
                     ],
-                  ),
+                  )
                 ),
 
-                if(dataShow=="clothing")...clothingData.map((c){
+                if(products=="clothing")...clothingData.map((c){
                   return getCard(c.name.toString(), c.price, c.imageName.toString(),c.description.toString());
                 }),
-                if(dataShow=="sweater")...sweaterData.map((s){
+                if(products=="sweater")...sweaterData.map((s){
                   return getCard(s.name.toString(), s.price, s.imageName.toString(),s.description.toString());
                 }),
-                if(dataShow=="shoes")...shoesData.map((sh){
+                if(products=="shoes")...shoesData.map((sh){
                   return getCard(sh.name.toString(), sh.price, sh.imageName.toString(),sh.description.toString());
                 }),
               ],
